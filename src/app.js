@@ -1,4 +1,3 @@
-/* eslint-disable */
 import "bootstrap";
 import "./style.css";
 
@@ -16,18 +15,19 @@ const when = [
   "while I was praying"
 ];
 
-function generateExcuse() {
-  const randomWho = who[Math.floor(Math.random() * who.length)];
-  const randomAction = action[Math.floor(Math.random() * action.length)];
-  const randomWhat = what[Math.floor(Math.random() * what.length)];
-  const randomWhen = when[Math.floor(Math.random() * when.length)];
+window.onload = generateExcuse();
 
-  return `${randomWho} ${randomAction} ${randomWhat} ${randomWhen}`;
+function getElement(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
 
-// Obtén el elemento HTML por su id
+function generateExcuse() {
+  return `${getElement(who)} ${getElement(action)} ${getElement(
+    what
+  )} ${getElement(when)}`;
+}
+
 const excuseElement = document.getElementById("excuse");
 
-// Genera la excusa y actualiza el contenido del elemento
 const randomExcuse = generateExcuse();
 excuseElement.textContent = randomExcuse;
